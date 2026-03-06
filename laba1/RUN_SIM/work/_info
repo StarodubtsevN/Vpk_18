@@ -1,0 +1,39 @@
+m255
+K3
+13
+cModel Technology
+Z0 d\\vmware-host\Shared Folders\shared_folder\sv_source\laba1\RUN_SIM
+vlaba1
+Z1 Mx1 6 sv_std 3 std
+Z2 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+ICU]X7K60RFo6JjOO;hUc@3
+VWEOJz^DZcZaCQA78Qc;6?2
+S1
+w1772807966
+8../laba1.sv
+F../laba1.sv
+L0 1
+Z3 OV;L;6.5b;42
+r1
+31
+o-O0
+!s100 hT8_bDL54=JR96K[U2f;S0
+!s85 0
+!s101 -O0
+vlaba1_testbench
+R1
+R2
+!s100 ;HHLnSAQzj>K@3ea=LWT;2
+I9WceU;<A1gIcIGaEInT7i1
+V3FJ?GMZ]`3J97I]zC06_72
+S1
+w1772809806
+8../laba1_testbench.sv
+F../laba1_testbench.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s101 -O0
+o-O0

@@ -1,7 +1,7 @@
-module laba1_testbench( 
+module laba1_testbench( );
   logic x1,x2,x3,x4,y;
-  laba1 laba1_inst(x1,x2,x3,x4,y)
-);
+  laba1 laba1_inst(x1,x2,x3,x4,y);
+
 
 initial begin
 
