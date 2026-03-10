@@ -20,6 +20,40 @@ o-O0
 !s100 hT8_bDL54=JR96K[U2f;S0
 !s85 0
 !s101 -O0
+vlaba1_demux
+R1
+R2
+IDV^S<IjYATYO`bG:LCT^P3
+Ve;FFmH0lWKP:0@7OZVS1D2
+S1
+w1773124041
+8../laba1_demux.sv
+F../laba1_demux.sv
+L0 1
+R3
+r1
+31
+o-O0
+!s100 A7Wge8c:A@_ZFcW`2@I8?1
+!s85 0
+!s101 -O0
+vlaba1_mux
+R1
+R2
+If:0WRJ@`Z8_INJWLW9fmi3
+VN<A1c:lbc[Go=A0`leXJl2
+S1
+w1773122589
+8../laba1_mux.sv
+F../laba1_mux.sv
+L0 1
+R3
+r1
+31
+o-O0
+!s100 5E3IX7RDf5VM;AMZ<?]CO2
+!s85 0
+!s101 -O0
 vlaba1_mux_f_demux
 R1
 R2
@@ -40,13 +74,13 @@ o-O0
 vlaba1_testbench
 R1
 R2
-!s100 eg`^1BMJ@TKnJjV[0>dn;2
-I_7]AWS6RE^hnW:fJlGlLC1
-VdE18eNf5T7]MhE5XI]3Ig3
+!s100 :OhdXd60<ib9^[AMoaBzR3
+I6[^@o8L0FblcHEIbSDSEl2
+V3FJ?GMZ]`3J97I]zC06_72
 S1
-w1773127426
-8../laba1_full_testbench.sv
-F../laba1_full_testbench.sv
+w1773157084
+8../laba1_testbench.sv
+F../laba1_testbench.sv
 L0 1
 R3
 r1

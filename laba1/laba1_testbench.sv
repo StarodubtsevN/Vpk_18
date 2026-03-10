@@ -1,8 +1,8 @@
-module laba1_testbench(
-    input logic [4:0] d0, d1, d2, d3,
-    input logic [1:0] s,
-    input logic [3:0] sel
-  );  
+module laba1_testbench();  
+    logic [4:0] d0, d1, d2, d3;
+    logic [1:0] s;
+    logic [3:0] sel;
+    logic [8:0] dout;
 
   laba1_mux_f_demux laba1_mux_f_demux_inst(
     .d0(d0),
@@ -10,10 +10,9 @@ module laba1_testbench(
     .d2(d2),
     .d3(d3),
     .s(s),
-    .sel(sel)
+    .sel(sel),
+    .dout(dout)
   ); 
-  
-
 
 initial begin
 

@@ -18,17 +18,19 @@ vlib work
 #####################################################
 # add and compile source project files
 
-#vlog ../laba1.sv
+vlog ../laba1.sv
+vlog ../laba1_mux.sv
+vlog ../laba1_demux.sv
 vlog ../laba1_mux_f_demux.sv
-# vlog ../laba1_testbench.sv
-vlog ../laba1_full_testbench.sv
+vlog ../laba1_testbench.sv
+# vlog ../laba1_full_testbench.sv
 #vlog ../dat_files/*.mem
 
 #####################################################
 # use top level testbench
 
-vsim -c work.laba1_full_testbench
-# vsim -c work.laba1_testbench
+# vsim -c work.laba1_full_testbench
+vsim -c work.laba1_testbench
 
 
 # add signals on waveform diagram
