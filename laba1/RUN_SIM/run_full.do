@@ -18,9 +18,7 @@ vlib work
 #####################################################
 # add and compile source project files
 
-#vlog ../laba1.sv
 vlog ../laba1_mux_f_demux.sv
-# vlog ../laba1_testbench.sv
 vlog ../laba1_full_testbench.sv
 #vlog ../dat_files/*.mem
 
@@ -28,8 +26,6 @@ vlog ../laba1_full_testbench.sv
 # use top level testbench
 
 vsim -c work.laba1_full_testbench
-# vsim -c work.laba1_testbench
-
 
 # add signals on waveform diagram
 # add wave -radix decimal -group TOP sim:/testbench1/sillyfunction/*
@@ -38,3 +34,4 @@ add wave *
 # run simulation
 #run 100ns
 run -a
+

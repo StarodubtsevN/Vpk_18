@@ -12,8 +12,6 @@ module laba1_testbench(
     .s(s),
     .sel(sel)
   ); 
-  
-
 
 initial begin
 

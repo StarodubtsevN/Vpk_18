@@ -20,16 +20,33 @@ o-O0
 !s100 hT8_bDL54=JR96K[U2f;S0
 !s85 0
 !s101 -O0
+vlaba1_mux_f_demux
+R1
+R2
+IGdPn[ooV25f6]?TAQ=G^i0
+VE75YEI9h[fJ^VXD_Z7lDB1
+S1
+w1773126655
+8../laba1_mux_f_demux.sv
+F../laba1_mux_f_demux.sv
+L0 1
+R3
+r1
+31
+o-O0
+!s100 X@iSHi5c3[]f4D3V[gb6c0
+!s85 0
+!s101 -O0
 vlaba1_testbench
 R1
 R2
-!s100 ;HHLnSAQzj>K@3ea=LWT;2
-I9WceU;<A1gIcIGaEInT7i1
-V3FJ?GMZ]`3J97I]zC06_72
+!s100 eg`^1BMJ@TKnJjV[0>dn;2
+I_7]AWS6RE^hnW:fJlGlLC1
+VdE18eNf5T7]MhE5XI]3Ig3
 S1
-w1772809806
-8../laba1_testbench.sv
-F../laba1_testbench.sv
+w1773127426
+8../laba1_full_testbench.sv
+F../laba1_full_testbench.sv
 L0 1
 R3
 r1
