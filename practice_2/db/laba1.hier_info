@@ -1,0 +1,124 @@
+|laba1_mux_f_demux
+d0[0] => d0_ff.DATAIN
+d0[1] => ~NO_FANOUT~
+d0[2] => ~NO_FANOUT~
+d0[3] => ~NO_FANOUT~
+d0[4] => ~NO_FANOUT~
+d1[0] => d1_ff.DATAIN
+d1[1] => ~NO_FANOUT~
+d1[2] => ~NO_FANOUT~
+d1[3] => ~NO_FANOUT~
+d1[4] => ~NO_FANOUT~
+d2[0] => d2_ff.DATAIN
+d2[1] => ~NO_FANOUT~
+d2[2] => ~NO_FANOUT~
+d2[3] => ~NO_FANOUT~
+d2[4] => ~NO_FANOUT~
+d3[0] => d3_ff.DATAIN
+d3[1] => ~NO_FANOUT~
+d3[2] => ~NO_FANOUT~
+d3[3] => ~NO_FANOUT~
+d3[4] => ~NO_FANOUT~
+s[0] => s_ff.DATAIN
+s[1] => ~NO_FANOUT~
+sel[0] => sel_ff.DATAIN
+sel[1] => ~NO_FANOUT~
+sel[2] => ~NO_FANOUT~
+sel[3] => ~NO_FANOUT~
+i_clk => dout[0]~reg0.CLK
+i_clk => dout[1]~reg0.CLK
+i_clk => dout[2]~reg0.CLK
+i_clk => dout[3]~reg0.CLK
+i_clk => dout[4]~reg0.CLK
+i_clk => dout[5]~reg0.CLK
+i_clk => dout[6]~reg0.CLK
+i_clk => dout[7]~reg0.CLK
+i_clk => dout[8]~reg0.CLK
+i_clk => sel_ff.CLK
+i_clk => s_ff.CLK
+i_clk => d3_ff.CLK
+i_clk => d2_ff.CLK
+i_clk => d1_ff.CLK
+i_clk => d0_ff.CLK
+dout[0] <= dout[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= dout[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= dout[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= dout[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= dout[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= dout[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= dout[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[7] <= dout[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dout[8] <= dout[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|laba1_mux_f_demux|laba1_mux:laba1_mux_inst
+d0[0] => y.DATAB
+d0[1] => y.DATAB
+d0[2] => y.DATAB
+d0[3] => y.DATAB
+d0[4] => y.DATAB
+d1[0] => y.DATAB
+d1[1] => y.DATAB
+d1[2] => y.DATAB
+d1[3] => y.DATAB
+d1[4] => y.DATAB
+d2[0] => y.DATAB
+d2[1] => y.DATAB
+d2[2] => y.DATAB
+d2[3] => y.DATAB
+d2[4] => y.DATAB
+d3[0] => y.DATAA
+d3[1] => y.DATAA
+d3[2] => y.DATAA
+d3[3] => y.DATAA
+d3[4] => y.DATAA
+s[0] => Equal0.IN31
+s[0] => Equal1.IN0
+s[0] => Equal2.IN31
+s[1] => Equal0.IN30
+s[1] => Equal1.IN31
+s[1] => Equal2.IN0
+y[0] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|laba1_mux_f_demux|laba1:laba1_inst
+x1 => y.IN0
+x1 => y.IN0
+x2 => y.IN1
+x2 => y.IN0
+x3 => y.IN1
+x3 => y.IN0
+x4 => y.IN1
+x4 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|laba1_mux_f_demux|laba1_demux:laba1_demux_inst
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+din => dout.DATAB
+sel[0] => Decoder0.IN3
+sel[1] => Decoder0.IN2
+sel[2] => Decoder0.IN1
+sel[3] => Decoder0.IN0
+dout[0] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[2] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[3] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[4] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[5] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[6] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[7] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+dout[8] <= dout.DB_MAX_OUTPUT_PORT_TYPE
+
+
