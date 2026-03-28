@@ -1,0 +1,39 @@
+m255
+K3
+13
+cModel Technology
+Z0 d\\vmware-host\Shared Folders\shared_folder\sv_source\practice_2\RUN_SIM
+vlec6
+Z1 Mx1 6 sv_std 3 std
+Z2 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+IkLCnCL_QL?An5zFF19i=>1
+V?TmndX=FbzGezeX;]D2Z?2
+S1
+w1774008481
+8../lec6.sv
+F../lec6.sv
+L0 1
+Z3 OV;L;6.5b;42
+r1
+31
+o-O0
+!s100 l3=?AQfL7eI:iUIVMTR262
+!s85 0
+!s101 -O0
+vlec6_testbench
+R1
+R2
+!s100 nXjBejZmlBU;@FZ6HW>2M1
+I`XAIaiTK62oVf1h`@_L6T0
+Vo@5[RWHJQbl20lfe9`JzU2
+S1
+w1774010038
+8../lec6_testbench.sv
+F../lec6_testbench.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s101 -O0
+o-O0

@@ -1,0 +1,26 @@
+module ShiftRegister #(parameter INPUT_W=3, parameter OUTPUT_W=24) (
+    input logic[INPUT_W-1:0] i_from,
+    input logic i_clk,
+    input logic i_arstn,
+    input logic i_enable,
+    output logic[OUTPUT_W-1:0] o_to
+);
+    parameter DELAY = OUTPUT_W / INPUT_W;
+    logic [DELAY-1:0] [INPUT_W-1:0] q;
+
+    always_ff @(posedge i_clk or negedge i_arstn) begin
+        if (~(i_arstn)) begin
+            q <= '0;
+        end else if (i_enable) begin
+            q <= {q[DELAY-2:0], i_from};
+        end
+    end
+
+    genvar i;
+    generate
+        for (i = 0; i < DELAY; i++) begin : bus_converter
+            assign o_to[INPUT_W*(i+1)-1 : INPUT_W*i] = q[i];
+        end
+    endgenerate
+    
+endmodule

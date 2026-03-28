@@ -1,0 +1,15 @@
+module register(
+  input logic i_clk, i_en, i_arstn, i_d,
+  output logic o_d
+);
+
+always_ff @ (posedge i_clk or negedge i_arst)
+ begin
+   if (~(i_arst)) begin
+     o_d <= '0;
+   end else if (i_en) begin
+     o_d <= i_d;
+   end
+ end
+
+endmodule

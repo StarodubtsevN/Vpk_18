@@ -1,0 +1,31 @@
+|pr3
+i_clk => o_valid~reg0.CLK
+i_clk => sum_temp[0].CLK
+i_clk => sum_temp[1].CLK
+i_clk => sum_temp[2].CLK
+i_clk => sum_temp[3].CLK
+i_valid => o_valid~reg0.DATAIN
+i_a[0] => Add0.IN4
+i_a[1] => Add0.IN3
+i_a[2] => Add0.IN2
+i_a[3] => Add0.IN1
+i_a[3] => o_overflow.IN0
+i_a[3] => o_sum.DATAB
+i_a[3] => o_overflow.IN0
+i_a[3] => o_sum.DATAB
+i_a[3] => o_sum.DATAB
+i_a[3] => o_sum.DATAB
+i_b[0] => Add0.IN8
+i_b[1] => Add0.IN7
+i_b[2] => Add0.IN6
+i_b[3] => Add0.IN5
+i_b[3] => o_overflow.IN1
+i_b[3] => o_overflow.IN1
+o_valid <= o_valid~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[0] <= o_sum.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[1] <= o_sum.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[2] <= o_sum.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[3] <= o_sum.DB_MAX_OUTPUT_PORT_TYPE
+o_overflow <= o_overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
