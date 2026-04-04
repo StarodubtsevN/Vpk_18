@@ -22,6 +22,7 @@ vlog ../counter.sv
 vlog ../front_detector.sv
 vlog ../register.sv
 vlog ../shift_register.sv
+vlog ../laba2.sv
 vlog ../laba2_testbench.sv
 #vlog ../dat_files/*.mem
 

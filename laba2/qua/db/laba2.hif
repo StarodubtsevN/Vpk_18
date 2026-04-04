@@ -138,42 +138,6 @@ shift_register:shift_register_inst
 
 # end
 # entity
-laba2
-# storage
-db|laba2.(1).cnf
-db|laba2.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-||vmware-host|shared folders|shared_folder|sv_source|laba2|laba2.sv
-b2ad69354079291981c28233161455
-9
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 counter
 # storage
 db|laba2.(4).cnf
@@ -247,6 +211,42 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 }
 # hierarchies {
 front_detector:front_detector_inst
+}
+# macro_sequence
+
+# end
+# entity
+laba2
+# storage
+db|laba2.(1).cnf
+db|laba2.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+||vmware-host|shared folders|shared_folder|sv_source|laba2|laba2.sv
+c0c32c8aa75a76f299d657b0ced1ed17
+9
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
 }
 # macro_sequence
 

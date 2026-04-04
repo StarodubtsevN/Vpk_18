@@ -5,11 +5,11 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 3.714 ns
+Actual Time    : 4.910 ns
 From           : i_sck
-To             : front_detector:front_detector_inst|q
+To             : shift_register:shift_register_inst|q[7][2]
 From Clock     : --
-To Clock       : i_clk
+To Clock       : i_sck
 Failed Paths   : 0
 
 Type           : Worst-case tco

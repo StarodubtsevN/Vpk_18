@@ -1,5 +1,5 @@
 Flow report for laba2
-Sat Apr 04 17:03:16 2026
+Sat Apr 04 21:00:18 2026
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,22 +38,24 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +-------------------------------+----------------------------------------------+
-; Flow Status                   ; Successful - Sat Apr 04 17:03:16 2026        ;
+; Flow Status                   ; Successful - Sat Apr 04 21:00:18 2026        ;
 ; Quartus II Version            ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                 ; laba2                                        ;
 ; Top-level Entity Name         ; laba2                                        ;
 ; Family                        ; Stratix II                                   ;
-; Met timing requirements       ; N/A                                          ;
-; Logic utilization             ; N/A                                          ;
-;     Combinational ALUTs       ; 11                                           ;
-;     Dedicated logic registers ; 61                                           ;
+; Met timing requirements       ; Yes                                          ;
+; Logic utilization             ; < 1 %                                        ;
+;     Combinational ALUTs       ; 11 / 12,480 ( < 1 % )                        ;
+;     Dedicated logic registers ; 61 / 12,480 ( < 1 % )                        ;
 ; Total registers               ; 61                                           ;
-; Total pins                    ; 35                                           ;
+; Total pins                    ; 35 / 343 ( 10 % )                            ;
 ; Total virtual pins            ; 0                                            ;
-; Total block memory bits       ; 0                                            ;
-; DSP block 9-bit elements      ; 0                                            ;
-; Total PLLs                    ; 0                                            ;
-; Total DLLs                    ; 0                                            ;
+; Total block memory bits       ; 0 / 419,328 ( 0 % )                          ;
+; DSP block 9-bit elements      ; 0 / 96 ( 0 % )                               ;
+; Total PLLs                    ; 0 / 6 ( 0 % )                                ;
+; Total DLLs                    ; 0 / 2 ( 0 % )                                ;
+; Device                        ; EP2S15F484C3                                 ;
+; Timing Models                 ; Final                                        ;
 +-------------------------------+----------------------------------------------+
 
 
@@ -62,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/04/2026 17:02:50 ;
+; Start date & time ; 04/04/2026 20:59:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; laba2               ;
 +-------------------+---------------------+
@@ -73,36 +75,45 @@ applicable agreement for further details.
 +------------------------------------+-----------------------------+---------------+-------------+----------------+
 ; Assignment Name                    ; Value                       ; Default Value ; Entity Name ; Section Id     ;
 +------------------------------------+-----------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 52236022937.177531136704840 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID              ; 52236022937.177532559402836 ; --            ; --          ; --             ;
 ; PARTITION_COLOR                    ; 16764057                    ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE             ; SOURCE                      ; --            ; --          ; Top            ;
 ; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                         ; --            ; --          ; eda_blast_fpga ;
 +------------------------------------+-----------------------------+---------------+-------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:29     ; 1.0                     ; 219 MB              ; 00:00:10                           ;
-; Total                ; 00:00:29     ; --                      ; --                  ; 00:00:10                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                           ;
++-------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++-------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis    ; 00:00:04     ; 1.0                     ; 218 MB              ; 00:00:04                           ;
+; Fitter                  ; 00:00:05     ; 1.0                     ; 260 MB              ; 00:00:04                           ;
+; Assembler               ; 00:00:03     ; 1.0                     ; 227 MB              ; 00:00:02                           ;
+; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; 158 MB              ; 00:00:01                           ;
+; Total                   ; 00:00:13     ; --                      ; --                  ; 00:00:11                           ;
++-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+---------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                       ;
-+----------------------+------------------+---------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
-+----------------------+------------------+---------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-CVG43R0  ; Windows Vista ; 6.2        ; x86_64         ;
-+----------------------+------------------+---------------+------------+----------------+
++------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                          ;
++-------------------------+------------------+---------------+------------+----------------+
+; Module Name             ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
++-------------------------+------------------+---------------+------------+----------------+
+; Analysis & Synthesis    ; DESKTOP-CVG43R0  ; Windows Vista ; 6.2        ; x86_64         ;
+; Fitter                  ; DESKTOP-CVG43R0  ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; DESKTOP-CVG43R0  ; Windows Vista ; 6.2        ; x86_64         ;
+; Classic Timing Analyzer ; DESKTOP-CVG43R0  ; Windows Vista ; 6.2        ; x86_64         ;
++-------------------------+------------------+---------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off laba2 -c laba2
+quartus_fit --read_settings_files=off --write_settings_files=off laba2 -c laba2
+quartus_asm --read_settings_files=off --write_settings_files=off laba2 -c laba2
+quartus_tan --read_settings_files=off --write_settings_files=off laba2 -c laba2 --timing_analysis_only
 
 
 
