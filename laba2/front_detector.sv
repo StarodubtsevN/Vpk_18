@@ -5,6 +5,6 @@ module front_detector(
 logic q;
 
 always_ff @(posedge i_clk) q <= i_sck;
-assign o_en = i_sck & ~q;
+assign o_en = ~i_sck & q;
 
 endmodule

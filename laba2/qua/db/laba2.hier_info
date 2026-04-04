@@ -1,4 +1,42 @@
-|shift_register
+|laba2
+i_mosi[0] => i_mosi[0].IN1
+i_mosi[1] => i_mosi[1].IN1
+i_mosi[2] => i_mosi[2].IN1
+i_sck => i_sck.IN2
+i_ss => Decoder0.IN0
+i_arstn => i_arstn.IN2
+i_clk => i_clk.IN2
+o_data[0] <= q[0].DB_MAX_OUTPUT_PORT_TYPE
+o_data[1] <= q[1].DB_MAX_OUTPUT_PORT_TYPE
+o_data[2] <= q[2].DB_MAX_OUTPUT_PORT_TYPE
+o_data[3] <= q[3].DB_MAX_OUTPUT_PORT_TYPE
+o_data[4] <= q[4].DB_MAX_OUTPUT_PORT_TYPE
+o_data[5] <= q[5].DB_MAX_OUTPUT_PORT_TYPE
+o_data[6] <= q[6].DB_MAX_OUTPUT_PORT_TYPE
+o_data[7] <= q[7].DB_MAX_OUTPUT_PORT_TYPE
+o_data[8] <= q[8].DB_MAX_OUTPUT_PORT_TYPE
+o_data[9] <= q[9].DB_MAX_OUTPUT_PORT_TYPE
+o_data[10] <= q[10].DB_MAX_OUTPUT_PORT_TYPE
+o_data[11] <= q[11].DB_MAX_OUTPUT_PORT_TYPE
+o_data[12] <= q[12].DB_MAX_OUTPUT_PORT_TYPE
+o_data[13] <= q[13].DB_MAX_OUTPUT_PORT_TYPE
+o_data[14] <= q[14].DB_MAX_OUTPUT_PORT_TYPE
+o_data[15] <= q[15].DB_MAX_OUTPUT_PORT_TYPE
+o_data[16] <= q[16].DB_MAX_OUTPUT_PORT_TYPE
+o_data[17] <= q[17].DB_MAX_OUTPUT_PORT_TYPE
+o_data[18] <= q[18].DB_MAX_OUTPUT_PORT_TYPE
+o_data[19] <= q[19].DB_MAX_OUTPUT_PORT_TYPE
+o_data[20] <= q[20].DB_MAX_OUTPUT_PORT_TYPE
+o_data[21] <= q[21].DB_MAX_OUTPUT_PORT_TYPE
+o_data[22] <= q[22].DB_MAX_OUTPUT_PORT_TYPE
+o_data[23] <= q[23].DB_MAX_OUTPUT_PORT_TYPE
+o_valid <= o_valid~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_miso[0] <= o_miso[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_miso[1] <= o_miso[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_miso[2] <= o_miso[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|laba2|shift_register:shift_register_inst
 i_from[0] => q[0][0].DATAIN
 i_from[1] => q[0][1].DATAIN
 i_from[2] => q[0][2].DATAIN
@@ -98,5 +136,40 @@ o_to[20] <= q[6][2].DB_MAX_OUTPUT_PORT_TYPE
 o_to[21] <= q[7][0].DB_MAX_OUTPUT_PORT_TYPE
 o_to[22] <= q[7][1].DB_MAX_OUTPUT_PORT_TYPE
 o_to[23] <= q[7][2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|laba2|counter:counter_inst
+i_en => count[0].ENA
+i_en => count[7].ENA
+i_en => count[6].ENA
+i_en => count[5].ENA
+i_en => count[4].ENA
+i_en => count[3].ENA
+i_en => count[2].ENA
+i_en => count[1].ENA
+i_clk => count[0].CLK
+i_clk => count[1].CLK
+i_clk => count[2].CLK
+i_clk => count[3].CLK
+i_clk => count[4].CLK
+i_clk => count[5].CLK
+i_clk => count[6].CLK
+i_clk => count[7].CLK
+i_arstn => count[0].ACLR
+i_arstn => count[1].ACLR
+i_arstn => count[2].ACLR
+i_arstn => count[3].ACLR
+i_arstn => count[4].ACLR
+i_arstn => count[5].ACLR
+i_arstn => count[6].ACLR
+i_arstn => count[7].ACLR
+o_en <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|laba2|front_detector:front_detector_inst
+i_clk => q.CLK
+i_sck => q.DATAIN
+i_sck => o_en.IN1
+o_en <= o_en.DB_MAX_OUTPUT_PORT_TYPE
 
 

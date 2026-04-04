@@ -1,10 +1,10 @@
 module laba1_mux_f_demux (
-    input logic [4:0] d0, d1, d2, d3,
+    input logic [3:0] d0, d1, d2, d3,
     input logic [1:0] s, 
     input logic [3:0] sel,
     output logic [8:0] dout 
 );
-    logic [4:0] mux_out;
+    logic [3:0] mux_out;
     logic func_out; 
 
     laba1_mux laba1_mux_inst (
