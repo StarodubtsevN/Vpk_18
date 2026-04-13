@@ -88,51 +88,35 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# macro_sequence
-
-# end
-# entity
-shift_register
-# storage
-db|laba2.(3).cnf
-db|laba2.(3).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-||vmware-host|shared folders|shared_folder|sv_source|laba2|shift_register.sv
-c3c143f11fcfa4390e1a9d9dcab33
-9
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-INPUT_W
-3
-PARAMETER_SIGNED_DEC
-DEF
-OUTPUT_W
-24
-PARAMETER_SIGNED_DEC
-DEF
-}
 # hierarchies {
-shift_register:shift_register_inst
+register:q_regs[0].reg_q
+register:q_regs[1].reg_q
+register:q_regs[2].reg_q
+register:q_regs[3].reg_q
+register:q_regs[4].reg_q
+register:q_regs[5].reg_q
+register:q_regs[6].reg_q
+register:q_regs[7].reg_q
+register:q_regs[8].reg_q
+register:q_regs[9].reg_q
+register:q_regs[10].reg_q
+register:q_regs[11].reg_q
+register:q_regs[12].reg_q
+register:q_regs[13].reg_q
+register:q_regs[14].reg_q
+register:q_regs[15].reg_q
+register:q_regs[16].reg_q
+register:q_regs[17].reg_q
+register:q_regs[18].reg_q
+register:q_regs[19].reg_q
+register:q_regs[20].reg_q
+register:q_regs[21].reg_q
+register:q_regs[22].reg_q
+register:q_regs[23].reg_q
+register:miso_regs[0].reg_miso
+register:miso_regs[1].reg_miso
+register:miso_regs[2].reg_miso
+register:reg_valid
 }
 # macro_sequence
 
@@ -180,18 +164,18 @@ counter:counter_inst
 
 # end
 # entity
-front_detector
+shift_register
 # storage
-db|laba2.(5).cnf
-db|laba2.(5).cnf
+db|laba2.(3).cnf
+db|laba2.(3).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
 }
 # case_sensitive
 # source_file
-||vmware-host|shared folders|shared_folder|sv_source|laba2|front_detector.sv
-ef15ebd3285d5f0fe40bf3b78b2cc9e
+||vmware-host|shared folders|shared_folder|sv_source|laba2|shift_register.sv
+12e15c1b22a652151410b52c34e359df
 9
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -209,8 +193,18 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
+# user_parameter {
+INPUT_W
+3
+PARAMETER_SIGNED_DEC
+USR
+OUTPUT_W
+24
+PARAMETER_SIGNED_DEC
+USR
+}
 # hierarchies {
-front_detector:front_detector_inst
+shift_register:shift_register_inst
 }
 # macro_sequence
 
@@ -227,7 +221,7 @@ ON
 # case_sensitive
 # source_file
 ||vmware-host|shared folders|shared_folder|sv_source|laba2|laba2.sv
-c0c32c8aa75a76f299d657b0ced1ed17
+51d176e8e8549f31375c410a75674cd
 9
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT

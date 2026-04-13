@@ -32,7 +32,6 @@ vlog ../laba2_testbench.sv
 # vsim -c work.laba1_full_testbench
 vsim -c work.laba2_testbench
 
-
 # add signals on waveform diagram
 # add wave -radix decimal -group TOP sim:/testbench1/sillyfunction/*
 add wave *

@@ -1,0 +1,35 @@
+|pract_3
+i_clk => o_overflow~reg0.CLK
+i_clk => o_sum[0]~reg0.CLK
+i_clk => o_sum[1]~reg0.CLK
+i_clk => o_sum[2]~reg0.CLK
+i_clk => o_sum[3]~reg0.CLK
+i_clk => b_rg[0].CLK
+i_clk => b_rg[1].CLK
+i_clk => b_rg[2].CLK
+i_clk => b_rg[3].CLK
+i_clk => a_rg[0].CLK
+i_clk => a_rg[1].CLK
+i_clk => a_rg[2].CLK
+i_clk => a_rg[3].CLK
+i_clk => o_valid~reg0.CLK
+i_clk => valid_rg.CLK
+i_rst => valid_rg.OUTPUTSELECT
+i_rst => o_valid.OUTPUTSELECT
+i_valid => valid_rg.DATAA
+i_a[0] => a_rg[0].DATAIN
+i_a[1] => a_rg[1].DATAIN
+i_a[2] => a_rg[2].DATAIN
+i_a[3] => a_rg[3].DATAIN
+i_b[0] => b_rg[0].DATAIN
+i_b[1] => b_rg[1].DATAIN
+i_b[2] => b_rg[2].DATAIN
+i_b[3] => b_rg[3].DATAIN
+o_valid <= o_valid~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[0] <= o_sum[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[1] <= o_sum[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[2] <= o_sum[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_sum[3] <= o_sum[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+o_overflow <= o_overflow~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
