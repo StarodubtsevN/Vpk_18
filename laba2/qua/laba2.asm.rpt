@@ -1,5 +1,5 @@
 Assembler report for laba2
-Fri Apr 10 21:34:57 2026
+Sat Apr 18 14:17:38 2026
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,8 +10,8 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: //vmware-host/Shared Folders/shared_folder/sv_source/laba2/qua/laba2.sof
-  6. Assembler Device Options: //vmware-host/Shared Folders/shared_folder/sv_source/laba2/qua/laba2.pof
+  5. Assembler Device Options: //vmware-host/Shared Folders/shara/sv_source/laba2/qua/laba2.sof
+  6. Assembler Device Options: //vmware-host/Shared Folders/shara/sv_source/laba2/qua/laba2.pof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Apr 10 21:34:57 2026 ;
+; Assembler Status      ; Successful - Sat Apr 18 14:17:38 2026 ;
 ; Revision Name         ; laba2                                 ;
 ; Top-level Entity Name ; laba2                                 ;
 ; Family                ; Stratix II                            ;
@@ -79,37 +79,37 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+--------------------------------------------------------------------------+
-; Assembler Generated Files                                                ;
-+--------------------------------------------------------------------------+
-; File Name                                                                ;
-+--------------------------------------------------------------------------+
-; //vmware-host/Shared Folders/shared_folder/sv_source/laba2/qua/laba2.sof ;
-; //vmware-host/Shared Folders/shared_folder/sv_source/laba2/qua/laba2.pof ;
-+--------------------------------------------------------------------------+
++------------------------------------------------------------------+
+; Assembler Generated Files                                        ;
++------------------------------------------------------------------+
+; File Name                                                        ;
++------------------------------------------------------------------+
+; //vmware-host/Shared Folders/shara/sv_source/laba2/qua/laba2.sof ;
+; //vmware-host/Shared Folders/shara/sv_source/laba2/qua/laba2.pof ;
++------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Assembler Device Options: //vmware-host/Shared Folders/shared_folder/sv_source/laba2/qua/laba2.sof ;
-+----------------+-----------------------------------------------------------------------------------+
-; Option         ; Setting                                                                           ;
-+----------------+-----------------------------------------------------------------------------------+
-; Device         ; EP2S15F484C3                                                                      ;
-; JTAG usercode  ; 0xFFFFFFFF                                                                        ;
-; Checksum       ; 0x0027EF0B                                                                        ;
-+----------------+-----------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------+
+; Assembler Device Options: //vmware-host/Shared Folders/shara/sv_source/laba2/qua/laba2.sof ;
++----------------+---------------------------------------------------------------------------+
+; Option         ; Setting                                                                   ;
++----------------+---------------------------------------------------------------------------+
+; Device         ; EP2S15F484C3                                                              ;
+; JTAG usercode  ; 0xFFFFFFFF                                                                ;
+; Checksum       ; 0x0027F1ED                                                                ;
++----------------+---------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Assembler Device Options: //vmware-host/Shared Folders/shared_folder/sv_source/laba2/qua/laba2.pof ;
-+--------------------+-------------------------------------------------------------------------------+
-; Option             ; Setting                                                                       ;
-+--------------------+-------------------------------------------------------------------------------+
-; Device             ; EPC16                                                                         ;
-; JTAG usercode      ; 0xFFFFFFFF                                                                    ;
-; Checksum           ; 0x1EF51644                                                                    ;
-; Compression Ratio  ; 3                                                                             ;
-+--------------------+-------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------+
+; Assembler Device Options: //vmware-host/Shared Folders/shara/sv_source/laba2/qua/laba2.pof ;
++--------------------+-----------------------------------------------------------------------+
+; Option             ; Setting                                                               ;
++--------------------+-----------------------------------------------------------------------+
+; Device             ; EPC16                                                                 ;
+; JTAG usercode      ; 0xFFFFFFFF                                                            ;
+; Checksum           ; 0x1EF504B8                                                            ;
+; Compression Ratio  ; 3                                                                     ;
++--------------------+-----------------------------------------------------------------------+
 
 
 +--------------------+
@@ -118,14 +118,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II Assembler
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Fri Apr 10 21:34:55 2026
+    Info: Processing started: Sat Apr 18 14:17:35 2026
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off laba2 -c laba2
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
 Info: Quartus II Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 227 megabytes
-    Info: Processing ended: Fri Apr 10 21:34:57 2026
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 228 megabytes
+    Info: Processing ended: Sat Apr 18 14:17:38 2026
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 

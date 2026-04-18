@@ -9,11 +9,12 @@ Z2 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
 ICU]X7K60RFo6JjOO;hUc@3
 VWEOJz^DZcZaCQA78Qc;6?2
 S1
+Z3 d\\vmware-host\Shared Folders\shara\sv_source\laba1\RUN_SIM
 w1774871866
 8../laba1.sv
 F../laba1.sv
 L0 1
-Z3 OV;L;6.5b;42
+Z4 OV;L;6.5b;42
 r1
 31
 o-O0
@@ -26,11 +27,12 @@ R2
 IDV^S<IjYATYO`bG:LCT^P3
 Ve;FFmH0lWKP:0@7OZVS1D2
 S1
-w1773124041
+R3
+w1776510426
 8../laba1_demux.sv
 F../laba1_demux.sv
 L0 1
-R3
+R4
 r1
 31
 o-O0
@@ -44,10 +46,10 @@ IdZ9B6MZ`ddXn`XDE8aMei0
 VA2KhCiNXmoQ;h?@NCQYBn3
 S1
 w1774867618
-Z4 8../laba1_testbench.sv
-Z5 F../laba1_testbench.sv
+Z5 8../laba1_testbench.sv
+Z6 F../laba1_testbench.sv
 L0 1
-R3
+R4
 r1
 31
 o-O0
@@ -60,11 +62,12 @@ R2
 Il=7U3d]1baL:Q7G@kBh[22
 Vm3H2jb]Fi@:8UCX[GTJ1S0
 S1
+R3
 w1774871861
 8../laba1_mux.sv
 F../laba1_mux.sv
 L0 1
-R3
+R4
 r1
 31
 o-O0
@@ -77,11 +80,12 @@ R2
 IRU=FMnb6OAUn2AklCA__40
 V401Z7WVm`3NY;3nge4c060
 S1
+R3
 w1774871888
 8../laba1_mux_f_demux.sv
 F../laba1_mux_f_demux.sv
 L0 1
-R3
+R4
 r1
 31
 o-O0
@@ -98,7 +102,7 @@ w1774863206
 8../laba1_tb.sv
 F../laba1_tb.sv
 L0 1
-R3
+R4
 r1
 31
 o-O0
@@ -108,15 +112,16 @@ o-O0
 vlaba1_testbench
 R1
 R2
-!s100 z5JaiJ0Fi_5CSH=;L8R4G1
-InV@Fd]g7lj>0N92`NT1Z80
+!s100 9NVnf6U00Z?^Oh>hkc<g82
+IBYYXZKAm`Z4>j@0U=Aj6@0
 V3FJ?GMZ]`3J97I]zC06_72
 S1
-w1774871722
-R4
-R5
-L0 1
 R3
+w1776508436
+R5
+R6
+L0 1
+R4
 r1
 !s85 0
 31

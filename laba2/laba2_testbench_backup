@@ -1,0 +1,93 @@
+module laba2_testbench();
+
+//
+// param and localparam
+//
+
+parameter INFO = 1;
+parameter NUM_ITER = 10;
+parameter INPUT_W  = 3;
+parameter OUTPUT_W = 24;
+parameter SCK_DIV  = 14;
+parameter CLK_PERIOD = 4.545ns;  // 220 MHz
+
+localparam DELAY = OUTPUT_W / INPUT_W; // 8
+
+logic        i_clk = 0;
+logic        i_arstn = 0;
+logic        i_ss = 1;
+logic        i_sck = 0;
+logic [2:0]  i_mosi = 0;
+logic [23:0] o_data;
+logic        o_valid;
+logic [2:0]  o_miso;
+
+logic [23:0] expected_data;
+int error_cnt = 0;
+int trans_cnt = 0;
+
+laba2 dut (.*);
+
+// system tact
+initial forever #(CLK_PERIOD/2) i_clk = ~i_clk;
+
+// i_sck = i_clk / SCK_DIV
+initial begin
+    i_sck = 0;
+    forever begin
+        repeat(SCK_DIV/2) @(posedge i_clk);
+        i_sck = ~i_sck;
+    end
+end
+
+// reset
+initial begin
+    i_arstn = 0;
+    #50;
+    @(posedge i_clk);
+    i_arstn = 1;
+    @(posedge i_clk);
+end
+
+// send one word (CPHA=0, MSB first)
+task automatic send_word(input logic [23:0] word);
+    logic [2:0] nibble;
+    i_ss = 0;
+    for (int i = 0; i < DELAY; i++) begin
+        nibble = word[23 - i*INPUT_W -: INPUT_W];
+        i_mosi = nibble;
+        @(posedge i_sck);
+    end
+    @(posedge i_sck); // дополнительный фронт для завершения
+    i_ss = 1;
+    @(posedge i_clk);
+endtask
+
+// тест
+initial begin
+    @(posedge i_arstn);
+    repeat(10) @(posedge i_clk);
+
+    for (int i = 0; i < NUM_ITER; i++) begin
+        expected_data = $urandom & 32'hFFFFFF;
+        if (INFO) $display("INPUT: iteration %0d, word = 0x%06h", i, expected_data);
+        send_word(expected_data);
+        @(posedge o_valid);
+        @(negedge i_clk);   // time for
+        if (o_data !== expected_data) begin
+            error_cnt++;
+            if (INFO) $display("OUTPUT: iteration %0d, got 0x%06h, expected 0x%06h",
+                               i, o_data, expected_data);
+        end else if (INFO) $display("OUTPUT: iteration %0d, OK", i);
+    end
+
+    if (error_cnt == 0)
+        $display("PASS %s, %0d transactions OK.", `__FILE__, NUM_ITER);
+    else
+        $display("FAIL %s, %0d errors out of %0d.", `__FILE__, error_cnt, NUM_ITER);
+    $stop;
+end
+
+always @(posedge o_valid) trans_cnt++;
+
+endmodule

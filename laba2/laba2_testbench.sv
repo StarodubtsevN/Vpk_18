@@ -1,116 +1,69 @@
-`ifndef SYNTHESIS
-module laba2_testbench();
+module laba2_testbench ();
 
-localparam INPUT_W  = 3;
-localparam OUTPUT_W = 24;
-localparam SCK_DIV  = 14;
-localparam DELAY    = OUTPUT_W / INPUT_W;
+parameter  INFO = 1;
+parameter  NUM_ITER = 10;
 
-logic [2:0]  i_mosi;
-logic        i_sck;
-logic        i_ss;
-logic        i_arstn;
-logic        i_clk;
-logic [23:0] o_data;
-logic        o_valid;
-logic [2:0]  o_miso;
+parameter  WIO_TB = 8;
+localparam MAX_RANGE = (2 ** WIO_TB) - 1;
 
-logic [23:0] expected_data;
-int error_cnt = 0;
-int trans_cnt = 0;
+parameter  CLK_PERIOD = 4.545ns; // 220 MHz
 
-initial begin
-    i_clk = 0;
-    forever #2.272727 i_clk = ~i_clk;
-end
+logic        clk = 0;
+logic        arstn = 0;
+logic        ss = 1;
+logic        sck = 0;
 
-initial begin
-    i_sck = 0;
-    forever begin
-        repeat(SCK_DIV/2) @(posedge i_clk);
-        i_sck = ~i_sck;
-    end
-end
+logic [2:0]  mosi = 0;
 
-initial begin
-    i_arstn = 0;
-    #50;
-    i_arstn = 1;
-end
+logic [23:0] out_data;
+logic        out_valid;
+logic [2:0]  out_miso;
 
-task automatic send_word(input logic [23:0] word);
-    logic [2:0] nibble;
-    i_ss = 0;
-    @(posedge i_sck);
-    for (int i = 0; i < DELAY; i++) begin
-        nibble = word[23 - i*INPUT_W -: INPUT_W];
-        i_mosi = nibble;
-        if (i < DELAY-1) @(posedge i_sck);
-    end
-    @(posedge i_sck);
-    i_ss = 1;
-    @(posedge i_clk);
-endtask
+logic [WIO_TB : 0]     ethalon_data = 0;
+int ethalon_data_array[NUM_ITER] = '{NUM_ITER{0}};
+logic [WIO_TB : 0]     ethalon_data_out = 0;
+int error_counter = 0;
 
-initial begin
-    i_mosi = '0;
-    i_ss   = 1;
-    @(posedge i_arstn);
-    repeat(10) @(posedge i_clk);
+localparam DELAY = OUTPUT_W / INPUT_W; // 8
 
-    expected_data = $urandom & 32'hFFFFFF;
-    $display("=== Transaction 1: sending 0x%06h ===", expected_data);
-    send_word(expected_data);
-    @(posedge o_valid);
-    if (o_data !== expected_data) begin
-        $display("ERROR: got 0x%06h, expected 0x%06h", o_data, expected_data);
-        error_cnt++;
-    end else $display("OK: got 0x%06h", o_data);
-    @(posedge i_clk);
+laba2 laba2_inst(
+  .i_mosi(mosi),
+  .i_sck(sck),
+  .i_ss(ss),
+  .i_artsn(arstn),
+  .i_clk(clk),
 
-    $display("\n=== Multiple transactions (3) ===");
-    for (int t = 0; t < 3; t++) begin
-        expected_data = $urandom & 32'hFFFFFF;
-        $display("  Sending %0d: 0x%06h", t+1, expected_data);
-        send_word(expected_data);
-        @(posedge o_valid);
-        if (o_data !== expected_data) begin
-            $display("  ERROR: got 0x%06h", o_data);
-            error_cnt++;
-        end else $display("  OK");
-        @(posedge i_clk);
-    end
+  .o_data(out_data),
+  .o_valid(out_valid),
+  .o_miso(out_miso),
 
-    $display("\n=== Boundary test ===");
-    expected_data = 24'h000000;
-    send_word(expected_data);
-    @(posedge o_valid);
-    if (o_data !== expected_data) error_cnt++;
-    expected_data = 24'hFFFFFF;
-    send_word(expected_data);
-    @(posedge o_valid);
-    if (o_data !== expected_data) error_cnt++;
-
-    $display("\n======================================");
-    if (error_cnt == 0)
-        $display("PASS: %0d transactions OK.", trans_cnt+5);
-    else
-        $display("FAIL: %0d errors.", error_cnt);
-    $stop;
-end
-
-always @(posedge o_valid) trans_cnt++;
-
-laba2 dut (
-    .i_mosi   (i_mosi),
-    .i_sck    (i_sck),
-    .i_ss     (i_ss),
-    .i_arstn  (i_arstn),
-    .i_clk    (i_clk),
-    .o_data   (o_data),
-    .o_valid  (o_valid),
-    .o_miso   (o_miso)
 );
 
+
+initial begin
+    forever begin
+        #(CLK_PERIOD/2) clk = ~ clk;
+    end
+end
+
+initial begin
+    #10  arstn <= '0;
+   #500 arstn <= '1;
+end
+
+
+initial begin
+    @(negedge arstn);
+    for (int i = 0; i < NUM_ITER; i ++) begin
+        a = $urandom & 24'hffffff;     
+        $display("++ INPUT i => %d {%d, %d, %d}", i, c);
+
+		 ethalon_data[i] = {c};
+
+        @(posedge clk);
+    end
+end
+
+
+  
 endmodule
-`endif

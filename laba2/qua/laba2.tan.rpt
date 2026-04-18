@@ -1,5 +1,5 @@
 Classic Timing Analyzer report for laba2
-Fri Apr 10 21:35:02 2026
+Sat Apr 18 14:17:42 2026
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -12,10 +12,11 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   4. Clock Settings Summary
   5. Parallel Compilation
   6. Clock Setup: 'i_clk'
-  7. tsu
-  8. tco
-  9. th
- 10. Timing Analyzer Messages
+  7. Clock Setup: 'i_sck'
+  8. tsu
+  9. tco
+ 10. th
+ 11. Timing Analyzer Messages
 
 
 
@@ -38,17 +39,18 @@ applicable agreement for further details.
 
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Timing Analyzer Summary                                                                                                                                                                                     ;
-+------------------------------+-------+---------------+----------------------------------+-------------------------------+--------------------------------------------+------------+----------+--------------+
-; Type                         ; Slack ; Required Time ; Actual Time                      ; From                          ; To                                         ; From Clock ; To Clock ; Failed Paths ;
-+------------------------------+-------+---------------+----------------------------------+-------------------------------+--------------------------------------------+------------+----------+--------------+
-; Worst-case tsu               ; N/A   ; None          ; 4.954 ns                         ; i_sck                         ; shift_register:shift_register_inst|q[0][2] ; --         ; i_clk    ; 0            ;
-; Worst-case tco               ; N/A   ; None          ; 6.889 ns                         ; register:q_regs[13].reg_q|o_d ; o_data[13]                                 ; i_clk      ; --       ; 0            ;
-; Worst-case th                ; N/A   ; None          ; -2.129 ns                        ; i_mosi[1]                     ; register:miso_regs[1].reg_miso|o_d         ; --         ; i_clk    ; 0            ;
-; Clock Setup: 'i_clk'         ; N/A   ; None          ; 453.93 MHz ( period = 2.203 ns ) ; counter:counter_inst|count[0] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; 0            ;
-; Total number of failed paths ;       ;               ;                                  ;                               ;                                            ;            ;          ; 0            ;
-+------------------------------+-------+---------------+----------------------------------+-------------------------------+--------------------------------------------+------------+----------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                                ;
++------------------------------+-------+---------------+------------------------------------------------+--------------------------------------------+--------------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                                    ; From                                       ; To                                         ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+------------------------------------------------+--------------------------------------------+--------------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 3.737 ns                                       ; i_sck                                      ; front_detector:front_detector_inst|q       ; --         ; i_clk    ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 6.762 ns                                       ; q[14]                                      ; o_data[14]                                 ; i_clk      ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -2.187 ns                                      ; i_mosi[2]                                  ; o_miso[2]~reg0                             ; --         ; i_clk    ; 0            ;
+; Clock Setup: 'i_clk'         ; N/A   ; None          ; 368.73 MHz ( period = 2.712 ns )               ; counter:counter_inst|count[0]              ; q[23]                                      ; i_clk      ; i_clk    ; 0            ;
+; Clock Setup: 'i_sck'         ; N/A   ; None          ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[2][2] ; shift_register:shift_register_inst|q[3][2] ; i_sck      ; i_sck    ; 0            ;
+; Total number of failed paths ;       ;               ;                                                ;                                            ;                                            ;            ;          ; 0            ;
++------------------------------+-------+---------------+------------------------------------------------+--------------------------------------------+--------------------------------------------+------------+----------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -89,6 +91,7 @@ applicable agreement for further details.
 ; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
 ; i_clk           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; i_sck           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
 
 
@@ -103,213 +106,242 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clock Setup: 'i_clk'                                                                                                                                                                                                                                                                   ;
-+-----------------------------------------+-----------------------------------------------------+-------------------------------+--------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
-; Slack                                   ; Actual fmax (period)                                ; From                          ; To                                         ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
-+-----------------------------------------+-----------------------------------------------------+-------------------------------+--------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
-; N/A                                     ; 453.93 MHz ( period = 2.203 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.027 ns                ;
-; N/A                                     ; 453.93 MHz ( period = 2.203 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.027 ns                ;
-; N/A                                     ; 453.93 MHz ( period = 2.203 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.027 ns                ;
-; N/A                                     ; 453.93 MHz ( period = 2.203 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.027 ns                ;
-; N/A                                     ; 453.93 MHz ( period = 2.203 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.027 ns                ;
-; N/A                                     ; 453.93 MHz ( period = 2.203 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.027 ns                ;
-; N/A                                     ; 454.55 MHz ( period = 2.200 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.023 ns                ;
-; N/A                                     ; 454.55 MHz ( period = 2.200 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.023 ns                ;
-; N/A                                     ; 454.55 MHz ( period = 2.200 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.023 ns                ;
-; N/A                                     ; 454.55 MHz ( period = 2.200 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.023 ns                ;
-; N/A                                     ; 454.55 MHz ( period = 2.200 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.023 ns                ;
-; N/A                                     ; 454.55 MHz ( period = 2.200 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.023 ns                ;
-; N/A                                     ; 455.37 MHz ( period = 2.196 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.020 ns                ;
-; N/A                                     ; 455.37 MHz ( period = 2.196 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.020 ns                ;
-; N/A                                     ; 455.37 MHz ( period = 2.196 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.020 ns                ;
-; N/A                                     ; 455.37 MHz ( period = 2.196 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.020 ns                ;
-; N/A                                     ; 455.37 MHz ( period = 2.196 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.020 ns                ;
-; N/A                                     ; 455.37 MHz ( period = 2.196 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.020 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.016 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.016 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.016 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.016 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.016 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.016 ns                ;
-; N/A                                     ; 456.00 MHz ( period = 2.193 ns )                    ; counter:counter_inst|count[0] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.012 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 457.46 MHz ( period = 2.186 ns )                    ; counter:counter_inst|count[6] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 2.005 ns                ;
-; N/A                                     ; 477.78 MHz ( period = 2.093 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
-; N/A                                     ; 477.78 MHz ( period = 2.093 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
-; N/A                                     ; 477.78 MHz ( period = 2.093 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
-; N/A                                     ; 477.78 MHz ( period = 2.093 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
-; N/A                                     ; 477.78 MHz ( period = 2.093 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
-; N/A                                     ; 477.78 MHz ( period = 2.093 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
-; N/A                                     ; 478.47 MHz ( period = 2.090 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.913 ns                ;
-; N/A                                     ; 478.47 MHz ( period = 2.090 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.913 ns                ;
-; N/A                                     ; 478.47 MHz ( period = 2.090 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.913 ns                ;
-; N/A                                     ; 478.47 MHz ( period = 2.090 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.913 ns                ;
-; N/A                                     ; 478.47 MHz ( period = 2.090 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.913 ns                ;
-; N/A                                     ; 478.47 MHz ( period = 2.090 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.913 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 480.08 MHz ( period = 2.083 ns )                    ; counter:counter_inst|count[7] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.902 ns                ;
-; N/A                                     ; 487.80 MHz ( period = 2.050 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.874 ns                ;
-; N/A                                     ; 487.80 MHz ( period = 2.050 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.874 ns                ;
-; N/A                                     ; 487.80 MHz ( period = 2.050 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.874 ns                ;
-; N/A                                     ; 487.80 MHz ( period = 2.050 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.874 ns                ;
-; N/A                                     ; 487.80 MHz ( period = 2.050 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.874 ns                ;
-; N/A                                     ; 487.80 MHz ( period = 2.050 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.874 ns                ;
-; N/A                                     ; 488.52 MHz ( period = 2.047 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.870 ns                ;
-; N/A                                     ; 488.52 MHz ( period = 2.047 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.870 ns                ;
-; N/A                                     ; 488.52 MHz ( period = 2.047 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.870 ns                ;
-; N/A                                     ; 488.52 MHz ( period = 2.047 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.870 ns                ;
-; N/A                                     ; 488.52 MHz ( period = 2.047 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.870 ns                ;
-; N/A                                     ; 488.52 MHz ( period = 2.047 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.870 ns                ;
-; N/A                                     ; 489.00 MHz ( period = 2.045 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.869 ns                ;
-; N/A                                     ; 489.00 MHz ( period = 2.045 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.869 ns                ;
-; N/A                                     ; 489.00 MHz ( period = 2.045 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.869 ns                ;
-; N/A                                     ; 489.00 MHz ( period = 2.045 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.869 ns                ;
-; N/A                                     ; 489.00 MHz ( period = 2.045 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.869 ns                ;
-; N/A                                     ; 489.00 MHz ( period = 2.045 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.869 ns                ;
-; N/A                                     ; 489.72 MHz ( period = 2.042 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.865 ns                ;
-; N/A                                     ; 489.72 MHz ( period = 2.042 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.865 ns                ;
-; N/A                                     ; 489.72 MHz ( period = 2.042 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.865 ns                ;
-; N/A                                     ; 489.72 MHz ( period = 2.042 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.865 ns                ;
-; N/A                                     ; 489.72 MHz ( period = 2.042 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.865 ns                ;
-; N/A                                     ; 489.72 MHz ( period = 2.042 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.865 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[5] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.859 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; 491.40 MHz ( period = 2.035 ns )                    ; counter:counter_inst|count[1] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.854 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.777 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.777 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.777 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.777 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.777 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.777 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.773 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.769 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.769 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.769 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.769 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.769 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.769 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.762 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.758 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; register:q_regs[0].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.739 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; register:q_regs[1].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.739 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; register:q_regs[2].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.739 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.739 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; register:q_regs[4].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.739 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[6] ; register:q_regs[0].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.732 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[6] ; register:q_regs[1].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.732 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[6] ; register:q_regs[2].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.732 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[6] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.732 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[6] ; register:q_regs[4].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.732 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[7][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[6][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[5][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[4][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[3][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[2][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[1][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[0][2] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.665 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[7] ; register:q_regs[0].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.629 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[7] ; register:q_regs[1].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.629 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[7] ; register:q_regs[2].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.629 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[7] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.629 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[7] ; register:q_regs[4].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.629 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[7].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.632 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[10].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.632 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[13].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.632 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[16].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.632 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[19].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.632 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[22].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.632 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[6].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.628 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[9].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.628 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[12].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.628 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[15].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.628 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[18].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.628 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[21].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.628 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[5].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[8].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[11].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[14].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[17].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[20].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[2] ; register:q_regs[23].reg_q|o_d              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.617 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[5] ; register:q_regs[0].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.586 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[5] ; register:q_regs[1].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.586 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[5] ; register:q_regs[2].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.586 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[5] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.586 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[5] ; register:q_regs[4].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.586 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[1] ; register:q_regs[0].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.581 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[1] ; register:q_regs[1].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.581 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[1] ; register:q_regs[2].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.581 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[1] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.581 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[1] ; register:q_regs[4].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.581 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[1]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[0]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[2]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[3]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[4]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[5]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[6]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; counter:counter_inst|count[7]              ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; sck_reg                       ; shift_register:shift_register_inst|q[7][0] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.510 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[0].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.489 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[1].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.489 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[2].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.489 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.489 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[4] ; register:q_regs[4].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.489 ns                ;
-; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[3] ; register:q_regs[3].reg_q|o_d               ; i_clk      ; i_clk    ; None                        ; None                      ; 1.485 ns                ;
-; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                               ;                                            ;            ;          ;                             ;                           ;                         ;
-+-----------------------------------------+-----------------------------------------------------+-------------------------------+--------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'i_clk'                                                                                                                                                                                                                                                      ;
++-----------------------------------------+-----------------------------------------------------+-------------------------------+-------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                          ; To                            ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+-------------------------------+-------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 368.73 MHz ( period = 2.712 ns )                    ; counter:counter_inst|count[0] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.530 ns                ;
+; N/A                                     ; 374.25 MHz ( period = 2.672 ns )                    ; counter:counter_inst|count[0] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.496 ns                ;
+; N/A                                     ; 374.25 MHz ( period = 2.672 ns )                    ; counter:counter_inst|count[0] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.496 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 382.70 MHz ( period = 2.613 ns )                    ; counter:counter_inst|count[7] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.431 ns                ;
+; N/A                                     ; 388.65 MHz ( period = 2.573 ns )                    ; counter:counter_inst|count[7] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.397 ns                ;
+; N/A                                     ; 388.65 MHz ( period = 2.573 ns )                    ; counter:counter_inst|count[7] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.397 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 399.52 MHz ( period = 2.503 ns )                    ; counter:counter_inst|count[0] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.316 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 405.84 MHz ( period = 2.464 ns )                    ; counter:counter_inst|count[6] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.282 ns                ;
+; N/A                                     ; 412.54 MHz ( period = 2.424 ns )                    ; counter:counter_inst|count[6] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.248 ns                ;
+; N/A                                     ; 412.54 MHz ( period = 2.424 ns )                    ; counter:counter_inst|count[6] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.248 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 414.42 MHz ( period = 2.413 ns )                    ; counter:counter_inst|count[1] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.231 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 415.97 MHz ( period = 2.404 ns )                    ; counter:counter_inst|count[7] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.217 ns                ;
+; N/A                                     ; 416.67 MHz ( period = 2.400 ns )                    ; counter:counter_inst|count[0] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.216 ns                ;
+; N/A                                     ; 416.67 MHz ( period = 2.400 ns )                    ; counter:counter_inst|count[0] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.216 ns                ;
+; N/A                                     ; 416.67 MHz ( period = 2.400 ns )                    ; counter:counter_inst|count[0] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.216 ns                ;
+; N/A                                     ; 416.67 MHz ( period = 2.400 ns )                    ; counter:counter_inst|count[0] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.216 ns                ;
+; N/A                                     ; 416.67 MHz ( period = 2.400 ns )                    ; counter:counter_inst|count[0] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.216 ns                ;
+; N/A                                     ; 416.67 MHz ( period = 2.400 ns )                    ; counter:counter_inst|count[0] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.216 ns                ;
+; N/A                                     ; 421.41 MHz ( period = 2.373 ns )                    ; counter:counter_inst|count[1] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.197 ns                ;
+; N/A                                     ; 421.41 MHz ( period = 2.373 ns )                    ; counter:counter_inst|count[1] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.197 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 424.09 MHz ( period = 2.358 ns )                    ; counter:counter_inst|count[5] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.176 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[3] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 425.17 MHz ( period = 2.352 ns )                    ; counter:counter_inst|count[4] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.170 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[2]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[5]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[8]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[11]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[14]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[17]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[20]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 426.80 MHz ( period = 2.343 ns )                    ; counter:counter_inst|count[2] ; q[23]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.161 ns                ;
+; N/A                                     ; 431.41 MHz ( period = 2.318 ns )                    ; counter:counter_inst|count[5] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.142 ns                ;
+; N/A                                     ; 431.41 MHz ( period = 2.318 ns )                    ; counter:counter_inst|count[5] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.142 ns                ;
+; N/A                                     ; 432.53 MHz ( period = 2.312 ns )                    ; counter:counter_inst|count[3] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.136 ns                ;
+; N/A                                     ; 432.53 MHz ( period = 2.312 ns )                    ; counter:counter_inst|count[4] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.136 ns                ;
+; N/A                                     ; 432.53 MHz ( period = 2.312 ns )                    ; counter:counter_inst|count[3] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.136 ns                ;
+; N/A                                     ; 432.53 MHz ( period = 2.312 ns )                    ; counter:counter_inst|count[4] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.136 ns                ;
+; N/A                                     ; 434.22 MHz ( period = 2.303 ns )                    ; counter:counter_inst|count[2] ; q[3]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.127 ns                ;
+; N/A                                     ; 434.22 MHz ( period = 2.303 ns )                    ; counter:counter_inst|count[2] ; q[21]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.127 ns                ;
+; N/A                                     ; 434.59 MHz ( period = 2.301 ns )                    ; counter:counter_inst|count[7] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.117 ns                ;
+; N/A                                     ; 434.59 MHz ( period = 2.301 ns )                    ; counter:counter_inst|count[7] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.117 ns                ;
+; N/A                                     ; 434.59 MHz ( period = 2.301 ns )                    ; counter:counter_inst|count[7] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.117 ns                ;
+; N/A                                     ; 434.59 MHz ( period = 2.301 ns )                    ; counter:counter_inst|count[7] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.117 ns                ;
+; N/A                                     ; 434.59 MHz ( period = 2.301 ns )                    ; counter:counter_inst|count[7] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.117 ns                ;
+; N/A                                     ; 434.59 MHz ( period = 2.301 ns )                    ; counter:counter_inst|count[7] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.117 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 443.46 MHz ( period = 2.255 ns )                    ; counter:counter_inst|count[6] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 453.72 MHz ( period = 2.204 ns )                    ; counter:counter_inst|count[1] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 2.017 ns                ;
+; N/A                                     ; 464.68 MHz ( period = 2.152 ns )                    ; counter:counter_inst|count[6] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; 464.68 MHz ( period = 2.152 ns )                    ; counter:counter_inst|count[6] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; 464.68 MHz ( period = 2.152 ns )                    ; counter:counter_inst|count[6] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; 464.68 MHz ( period = 2.152 ns )                    ; counter:counter_inst|count[6] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; 464.68 MHz ( period = 2.152 ns )                    ; counter:counter_inst|count[6] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; 464.68 MHz ( period = 2.152 ns )                    ; counter:counter_inst|count[6] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 465.33 MHz ( period = 2.149 ns )                    ; counter:counter_inst|count[5] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.962 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[3] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 466.64 MHz ( period = 2.143 ns )                    ; counter:counter_inst|count[4] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.956 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[1]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[4]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[7]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[10]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[13]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[16]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[19]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 468.60 MHz ( period = 2.134 ns )                    ; counter:counter_inst|count[2] ; q[22]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.947 ns                ;
+; N/A                                     ; 475.96 MHz ( period = 2.101 ns )                    ; counter:counter_inst|count[1] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
+; N/A                                     ; 475.96 MHz ( period = 2.101 ns )                    ; counter:counter_inst|count[1] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
+; N/A                                     ; 475.96 MHz ( period = 2.101 ns )                    ; counter:counter_inst|count[1] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
+; N/A                                     ; 475.96 MHz ( period = 2.101 ns )                    ; counter:counter_inst|count[1] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
+; N/A                                     ; 475.96 MHz ( period = 2.101 ns )                    ; counter:counter_inst|count[1] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
+; N/A                                     ; 475.96 MHz ( period = 2.101 ns )                    ; counter:counter_inst|count[1] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.917 ns                ;
+; N/A                                     ; 488.76 MHz ( period = 2.046 ns )                    ; counter:counter_inst|count[5] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.862 ns                ;
+; N/A                                     ; 488.76 MHz ( period = 2.046 ns )                    ; counter:counter_inst|count[5] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.862 ns                ;
+; N/A                                     ; 488.76 MHz ( period = 2.046 ns )                    ; counter:counter_inst|count[5] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.862 ns                ;
+; N/A                                     ; 488.76 MHz ( period = 2.046 ns )                    ; counter:counter_inst|count[5] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.862 ns                ;
+; N/A                                     ; 488.76 MHz ( period = 2.046 ns )                    ; counter:counter_inst|count[5] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.862 ns                ;
+; N/A                                     ; 488.76 MHz ( period = 2.046 ns )                    ; counter:counter_inst|count[5] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.862 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[3] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[4] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[3] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[4] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[3] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[4] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[3] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[4] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[3] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[4] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[3] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 490.20 MHz ( period = 2.040 ns )                    ; counter:counter_inst|count[4] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; 492.37 MHz ( period = 2.031 ns )                    ; counter:counter_inst|count[2] ; q[0]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.847 ns                ;
+; N/A                                     ; 492.37 MHz ( period = 2.031 ns )                    ; counter:counter_inst|count[2] ; q[6]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.847 ns                ;
+; N/A                                     ; 492.37 MHz ( period = 2.031 ns )                    ; counter:counter_inst|count[2] ; q[9]                          ; i_clk      ; i_clk    ; None                        ; None                      ; 1.847 ns                ;
+; N/A                                     ; 492.37 MHz ( period = 2.031 ns )                    ; counter:counter_inst|count[2] ; q[12]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.847 ns                ;
+; N/A                                     ; 492.37 MHz ( period = 2.031 ns )                    ; counter:counter_inst|count[2] ; q[15]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.847 ns                ;
+; N/A                                     ; 492.37 MHz ( period = 2.031 ns )                    ; counter:counter_inst|count[2] ; q[18]                         ; i_clk      ; i_clk    ; None                        ; None                      ; 1.847 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; o_valid~reg0                  ; i_clk      ; i_clk    ; None                        ; None                      ; 1.396 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[7] ; o_valid~reg0                  ; i_clk      ; i_clk    ; None                        ; None                      ; 1.297 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; counter:counter_inst|count[7] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.177 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[6] ; o_valid~reg0                  ; i_clk      ; i_clk    ; None                        ; None                      ; 1.148 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; counter:counter_inst|count[6] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.142 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; counter:counter_inst|count[5] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.107 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[1] ; o_valid~reg0                  ; i_clk      ; i_clk    ; None                        ; None                      ; 1.097 ns                ;
+; N/A                                     ; Restricted to 500.00 MHz ( period = 2.000 ns )      ; counter:counter_inst|count[0] ; counter:counter_inst|count[4] ; i_clk      ; i_clk    ; None                        ; None                      ; 1.072 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                               ;                               ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+-------------------------------+-------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'i_sck'                                                                                                                                                                                                                                         ;
++-------+------------------------------------------------+--------------------------------------------+--------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                                       ; To                                         ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+--------------------------------------------+--------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[2][2] ; shift_register:shift_register_inst|q[3][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.573 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[2][0] ; shift_register:shift_register_inst|q[3][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.527 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[1][1] ; shift_register:shift_register_inst|q[2][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.524 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[5][0] ; shift_register:shift_register_inst|q[6][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.522 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[4][1] ; shift_register:shift_register_inst|q[5][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.517 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[5][1] ; shift_register:shift_register_inst|q[6][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.515 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[4][0] ; shift_register:shift_register_inst|q[5][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.510 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[3][2] ; shift_register:shift_register_inst|q[4][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.508 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[1][2] ; shift_register:shift_register_inst|q[2][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.428 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[6][2] ; shift_register:shift_register_inst|q[7][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.427 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[5][2] ; shift_register:shift_register_inst|q[6][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.423 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[4][2] ; shift_register:shift_register_inst|q[5][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.423 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[0][2] ; shift_register:shift_register_inst|q[1][2] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.423 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[0][1] ; shift_register:shift_register_inst|q[1][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.422 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[6][0] ; shift_register:shift_register_inst|q[7][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.421 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[3][0] ; shift_register:shift_register_inst|q[4][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.420 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[1][0] ; shift_register:shift_register_inst|q[2][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.420 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[0][0] ; shift_register:shift_register_inst|q[1][0] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.420 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[3][1] ; shift_register:shift_register_inst|q[4][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.420 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[2][1] ; shift_register:shift_register_inst|q[3][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.419 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; shift_register:shift_register_inst|q[6][1] ; shift_register:shift_register_inst|q[7][1] ; i_sck      ; i_sck    ; None                        ; None                      ; 0.418 ns                ;
++-------+------------------------------------------------+--------------------------------------------+--------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------+
@@ -317,82 +349,50 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------+--------------+------------+-----------+--------------------------------------------+----------+
 ; Slack ; Required tsu ; Actual tsu ; From      ; To                                         ; To Clock ;
 +-------+--------------+------------+-----------+--------------------------------------------+----------+
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[7][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[6][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[5][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[4][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[3][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[2][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[1][2] ; i_clk    ;
-; N/A   ; None         ; 4.954 ns   ; i_sck     ; shift_register:shift_register_inst|q[0][2] ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[1]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[0]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[2]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[3]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[4]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[5]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[6]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; counter:counter_inst|count[7]              ; i_clk    ;
-; N/A   ; None         ; 4.802 ns   ; i_sck     ; shift_register:shift_register_inst|q[7][0] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[7][1] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[5][1] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[4][1] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[3][1] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[2][1] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[1][1] ; i_clk    ;
-; N/A   ; None         ; 4.601 ns   ; i_sck     ; shift_register:shift_register_inst|q[0][1] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[6][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[5][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[4][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[3][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[2][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[1][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[0][0] ; i_clk    ;
-; N/A   ; None         ; 4.511 ns   ; i_sck     ; shift_register:shift_register_inst|q[6][1] ; i_clk    ;
-; N/A   ; None         ; 3.432 ns   ; i_sck     ; sck_reg                                    ; i_clk    ;
-; N/A   ; None         ; 3.228 ns   ; i_mosi[0] ; shift_register:shift_register_inst|q[0][0] ; i_clk    ;
-; N/A   ; None         ; 3.127 ns   ; i_mosi[0] ; register:miso_regs[0].reg_miso|o_d         ; i_clk    ;
-; N/A   ; None         ; 2.720 ns   ; i_mosi[2] ; shift_register:shift_register_inst|q[0][2] ; i_clk    ;
-; N/A   ; None         ; 2.720 ns   ; i_mosi[2] ; register:miso_regs[2].reg_miso|o_d         ; i_clk    ;
-; N/A   ; None         ; 2.469 ns   ; i_mosi[1] ; shift_register:shift_register_inst|q[0][1] ; i_clk    ;
-; N/A   ; None         ; 2.368 ns   ; i_mosi[1] ; register:miso_regs[1].reg_miso|o_d         ; i_clk    ;
+; N/A   ; None         ; 3.737 ns   ; i_sck     ; front_detector:front_detector_inst|q       ; i_clk    ;
+; N/A   ; None         ; 2.728 ns   ; i_mosi[1] ; o_miso[1]~reg0                             ; i_clk    ;
+; N/A   ; None         ; 2.709 ns   ; i_mosi[2] ; shift_register:shift_register_inst|q[0][2] ; i_sck    ;
+; N/A   ; None         ; 2.705 ns   ; i_mosi[0] ; o_miso[0]~reg0                             ; i_clk    ;
+; N/A   ; None         ; 2.618 ns   ; i_mosi[0] ; shift_register:shift_register_inst|q[0][0] ; i_sck    ;
+; N/A   ; None         ; 2.430 ns   ; i_mosi[1] ; shift_register:shift_register_inst|q[0][1] ; i_sck    ;
+; N/A   ; None         ; 2.426 ns   ; i_mosi[2] ; o_miso[2]~reg0                             ; i_clk    ;
 +-------+--------------+------------+-----------+--------------------------------------------+----------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; tco                                                                                              ;
-+-------+--------------+------------+------------------------------------+------------+------------+
-; Slack ; Required tco ; Actual tco ; From                               ; To         ; From Clock ;
-+-------+--------------+------------+------------------------------------+------------+------------+
-; N/A   ; None         ; 6.889 ns   ; register:q_regs[13].reg_q|o_d      ; o_data[13] ; i_clk      ;
-; N/A   ; None         ; 6.473 ns   ; register:q_regs[12].reg_q|o_d      ; o_data[12] ; i_clk      ;
-; N/A   ; None         ; 5.798 ns   ; register:q_regs[2].reg_q|o_d       ; o_data[2]  ; i_clk      ;
-; N/A   ; None         ; 5.750 ns   ; register:q_regs[14].reg_q|o_d      ; o_data[14] ; i_clk      ;
-; N/A   ; None         ; 5.649 ns   ; register:q_regs[8].reg_q|o_d       ; o_data[8]  ; i_clk      ;
-; N/A   ; None         ; 5.569 ns   ; register:q_regs[10].reg_q|o_d      ; o_data[10] ; i_clk      ;
-; N/A   ; None         ; 5.496 ns   ; register:reg_valid|o_d             ; o_valid    ; i_clk      ;
-; N/A   ; None         ; 5.395 ns   ; register:q_regs[9].reg_q|o_d       ; o_data[9]  ; i_clk      ;
-; N/A   ; None         ; 5.379 ns   ; register:q_regs[16].reg_q|o_d      ; o_data[16] ; i_clk      ;
-; N/A   ; None         ; 5.359 ns   ; register:miso_regs[1].reg_miso|o_d ; o_miso[1]  ; i_clk      ;
-; N/A   ; None         ; 5.314 ns   ; register:q_regs[21].reg_q|o_d      ; o_data[21] ; i_clk      ;
-; N/A   ; None         ; 5.288 ns   ; register:q_regs[19].reg_q|o_d      ; o_data[19] ; i_clk      ;
-; N/A   ; None         ; 5.276 ns   ; register:miso_regs[0].reg_miso|o_d ; o_miso[0]  ; i_clk      ;
-; N/A   ; None         ; 5.252 ns   ; register:q_regs[1].reg_q|o_d       ; o_data[1]  ; i_clk      ;
-; N/A   ; None         ; 5.249 ns   ; register:q_regs[0].reg_q|o_d       ; o_data[0]  ; i_clk      ;
-; N/A   ; None         ; 5.237 ns   ; register:q_regs[7].reg_q|o_d       ; o_data[7]  ; i_clk      ;
-; N/A   ; None         ; 5.217 ns   ; register:q_regs[18].reg_q|o_d      ; o_data[18] ; i_clk      ;
-; N/A   ; None         ; 5.213 ns   ; register:q_regs[22].reg_q|o_d      ; o_data[22] ; i_clk      ;
-; N/A   ; None         ; 5.212 ns   ; register:q_regs[15].reg_q|o_d      ; o_data[15] ; i_clk      ;
-; N/A   ; None         ; 5.198 ns   ; register:q_regs[23].reg_q|o_d      ; o_data[23] ; i_clk      ;
-; N/A   ; None         ; 5.197 ns   ; register:miso_regs[2].reg_miso|o_d ; o_miso[2]  ; i_clk      ;
-; N/A   ; None         ; 5.102 ns   ; register:q_regs[11].reg_q|o_d      ; o_data[11] ; i_clk      ;
-; N/A   ; None         ; 5.074 ns   ; register:q_regs[4].reg_q|o_d       ; o_data[4]  ; i_clk      ;
-; N/A   ; None         ; 5.050 ns   ; register:q_regs[20].reg_q|o_d      ; o_data[20] ; i_clk      ;
-; N/A   ; None         ; 5.043 ns   ; register:q_regs[17].reg_q|o_d      ; o_data[17] ; i_clk      ;
-; N/A   ; None         ; 5.043 ns   ; register:q_regs[5].reg_q|o_d       ; o_data[5]  ; i_clk      ;
-; N/A   ; None         ; 5.031 ns   ; register:q_regs[6].reg_q|o_d       ; o_data[6]  ; i_clk      ;
-; N/A   ; None         ; 5.027 ns   ; register:q_regs[3].reg_q|o_d       ; o_data[3]  ; i_clk      ;
-+-------+--------------+------------+------------------------------------+------------+------------+
++------------------------------------------------------------------------------+
+; tco                                                                          ;
++-------+--------------+------------+----------------+------------+------------+
+; Slack ; Required tco ; Actual tco ; From           ; To         ; From Clock ;
++-------+--------------+------------+----------------+------------+------------+
+; N/A   ; None         ; 6.762 ns   ; q[14]          ; o_data[14] ; i_clk      ;
+; N/A   ; None         ; 6.682 ns   ; q[8]           ; o_data[8]  ; i_clk      ;
+; N/A   ; None         ; 6.096 ns   ; q[6]           ; o_data[6]  ; i_clk      ;
+; N/A   ; None         ; 6.076 ns   ; q[2]           ; o_data[2]  ; i_clk      ;
+; N/A   ; None         ; 5.963 ns   ; q[3]           ; o_data[3]  ; i_clk      ;
+; N/A   ; None         ; 5.889 ns   ; q[10]          ; o_data[10] ; i_clk      ;
+; N/A   ; None         ; 5.570 ns   ; q[20]          ; o_data[20] ; i_clk      ;
+; N/A   ; None         ; 5.514 ns   ; q[17]          ; o_data[17] ; i_clk      ;
+; N/A   ; None         ; 5.506 ns   ; q[9]           ; o_data[9]  ; i_clk      ;
+; N/A   ; None         ; 5.397 ns   ; q[16]          ; o_data[16] ; i_clk      ;
+; N/A   ; None         ; 5.394 ns   ; q[12]          ; o_data[12] ; i_clk      ;
+; N/A   ; None         ; 5.382 ns   ; q[22]          ; o_data[22] ; i_clk      ;
+; N/A   ; None         ; 5.355 ns   ; q[18]          ; o_data[18] ; i_clk      ;
+; N/A   ; None         ; 5.331 ns   ; q[11]          ; o_data[11] ; i_clk      ;
+; N/A   ; None         ; 5.330 ns   ; q[23]          ; o_data[23] ; i_clk      ;
+; N/A   ; None         ; 5.322 ns   ; q[7]           ; o_data[7]  ; i_clk      ;
+; N/A   ; None         ; 5.305 ns   ; o_valid~reg0   ; o_valid    ; i_clk      ;
+; N/A   ; None         ; 5.303 ns   ; o_miso[0]~reg0 ; o_miso[0]  ; i_clk      ;
+; N/A   ; None         ; 5.270 ns   ; o_miso[2]~reg0 ; o_miso[2]  ; i_clk      ;
+; N/A   ; None         ; 5.169 ns   ; q[4]           ; o_data[4]  ; i_clk      ;
+; N/A   ; None         ; 5.144 ns   ; q[15]          ; o_data[15] ; i_clk      ;
+; N/A   ; None         ; 5.131 ns   ; q[5]           ; o_data[5]  ; i_clk      ;
+; N/A   ; None         ; 5.113 ns   ; q[21]          ; o_data[21] ; i_clk      ;
+; N/A   ; None         ; 5.113 ns   ; q[19]          ; o_data[19] ; i_clk      ;
+; N/A   ; None         ; 5.111 ns   ; q[1]           ; o_data[1]  ; i_clk      ;
+; N/A   ; None         ; 5.110 ns   ; q[13]          ; o_data[13] ; i_clk      ;
+; N/A   ; None         ; 5.073 ns   ; q[0]           ; o_data[0]  ; i_clk      ;
+; N/A   ; None         ; 5.069 ns   ; o_miso[1]~reg0 ; o_miso[1]  ; i_clk      ;
++-------+--------------+------------+----------------+------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------+
@@ -400,45 +400,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------+-------------+-----------+-----------+--------------------------------------------+----------+
 ; Minimum Slack ; Required th ; Actual th ; From      ; To                                         ; To Clock ;
 +---------------+-------------+-----------+-----------+--------------------------------------------+----------+
-; N/A           ; None        ; -2.129 ns ; i_mosi[1] ; register:miso_regs[1].reg_miso|o_d         ; i_clk    ;
-; N/A           ; None        ; -2.230 ns ; i_mosi[1] ; shift_register:shift_register_inst|q[0][1] ; i_clk    ;
-; N/A           ; None        ; -2.481 ns ; i_mosi[2] ; shift_register:shift_register_inst|q[0][2] ; i_clk    ;
-; N/A           ; None        ; -2.481 ns ; i_mosi[2] ; register:miso_regs[2].reg_miso|o_d         ; i_clk    ;
-; N/A           ; None        ; -2.888 ns ; i_mosi[0] ; register:miso_regs[0].reg_miso|o_d         ; i_clk    ;
-; N/A           ; None        ; -2.989 ns ; i_mosi[0] ; shift_register:shift_register_inst|q[0][0] ; i_clk    ;
-; N/A           ; None        ; -3.193 ns ; i_sck     ; sck_reg                                    ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[6][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[5][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[4][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[3][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[2][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[1][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[0][0] ; i_clk    ;
-; N/A           ; None        ; -4.272 ns ; i_sck     ; shift_register:shift_register_inst|q[6][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[7][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[5][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[4][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[3][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[2][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[1][1] ; i_clk    ;
-; N/A           ; None        ; -4.362 ns ; i_sck     ; shift_register:shift_register_inst|q[0][1] ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[1]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[0]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[2]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[3]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[4]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[5]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[6]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; counter:counter_inst|count[7]              ; i_clk    ;
-; N/A           ; None        ; -4.563 ns ; i_sck     ; shift_register:shift_register_inst|q[7][0] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[7][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[6][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[5][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[4][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[3][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[2][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[1][2] ; i_clk    ;
-; N/A           ; None        ; -4.715 ns ; i_sck     ; shift_register:shift_register_inst|q[0][2] ; i_clk    ;
+; N/A           ; None        ; -2.187 ns ; i_mosi[2] ; o_miso[2]~reg0                             ; i_clk    ;
+; N/A           ; None        ; -2.191 ns ; i_mosi[1] ; shift_register:shift_register_inst|q[0][1] ; i_sck    ;
+; N/A           ; None        ; -2.379 ns ; i_mosi[0] ; shift_register:shift_register_inst|q[0][0] ; i_sck    ;
+; N/A           ; None        ; -2.466 ns ; i_mosi[0] ; o_miso[0]~reg0                             ; i_clk    ;
+; N/A           ; None        ; -2.470 ns ; i_mosi[2] ; shift_register:shift_register_inst|q[0][2] ; i_sck    ;
+; N/A           ; None        ; -2.489 ns ; i_mosi[1] ; o_miso[1]~reg0                             ; i_clk    ;
+; N/A           ; None        ; -3.498 ns ; i_sck     ; front_detector:front_detector_inst|q       ; i_clk    ;
 +---------------+-------------+-----------+-----------+--------------------------------------------+----------+
 
 
@@ -448,77 +416,99 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II Classic Timing Analyzer
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Fri Apr 10 21:35:01 2026
+    Info: Processing started: Sat Apr 18 14:17:41 2026
 Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off laba2 -c laba2 --timing_analysis_only
 Warning: Found pins functioning as undefined clocks and/or memory enables
     Info: Assuming node "i_clk" is an undefined clock
-Info: Clock "i_clk" has Internal fmax of 453.93 MHz between source register "counter:counter_inst|count[0]" and destination register "register:q_regs[7].reg_q|o_d" (period= 2.203 ns)
-    Info: + Longest register to register delay is 2.027 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X31_Y2_N17; Fanout = 4; REG Node = 'counter:counter_inst|count[0]'
-        Info: 2: + IC(0.247 ns) + CELL(0.272 ns) = 0.519 ns; Loc. = LCCOMB_X31_Y2_N30; Fanout = 1; COMB Node = 'counter:counter_inst|Equal0~0'
-        Info: 3: + IC(0.196 ns) + CELL(0.053 ns) = 0.768 ns; Loc. = LCCOMB_X31_Y2_N24; Fanout = 25; COMB Node = 'counter:counter_inst|Equal0~1'
-        Info: 4: + IC(0.513 ns) + CELL(0.746 ns) = 2.027 ns; Loc. = LCFF_X34_Y2_N3; Fanout = 1; REG Node = 'register:q_regs[7].reg_q|o_d'
-        Info: Total cell delay = 1.071 ns ( 52.84 % )
-        Info: Total interconnect delay = 0.956 ns ( 47.16 % )
-    Info: - Smallest clock skew is 0.008 ns
-        Info: + Shortest clock path from clock "i_clk" to destination register is 2.497 ns
+    Info: Assuming node "i_sck" is an undefined clock
+Info: Clock "i_clk" has Internal fmax of 368.73 MHz between source register "counter:counter_inst|count[0]" and destination register "q[2]" (period= 2.712 ns)
+    Info: + Longest register to register delay is 2.530 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X29_Y2_N19; Fanout = 4; REG Node = 'counter:counter_inst|count[0]'
+        Info: 2: + IC(0.610 ns) + CELL(0.378 ns) = 0.988 ns; Loc. = LCCOMB_X30_Y3_N16; Fanout = 1; COMB Node = 'counter:counter_inst|Equal0~0'
+        Info: 3: + IC(0.200 ns) + CELL(0.053 ns) = 1.241 ns; Loc. = LCCOMB_X30_Y3_N12; Fanout = 25; COMB Node = 'counter:counter_inst|Equal0~1'
+        Info: 4: + IC(0.543 ns) + CELL(0.746 ns) = 2.530 ns; Loc. = LCFF_X31_Y3_N3; Fanout = 1; REG Node = 'q[2]'
+        Info: Total cell delay = 1.177 ns ( 46.52 % )
+        Info: Total interconnect delay = 1.353 ns ( 53.48 % )
+    Info: - Smallest clock skew is 0.002 ns
+        Info: + Shortest clock path from clock "i_clk" to destination register is 2.486 ns
             Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'i_clk'
-            Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 61; COMB Node = 'i_clk~clkctrl'
-            Info: 3: + IC(0.682 ns) + CELL(0.618 ns) = 2.497 ns; Loc. = LCFF_X34_Y2_N3; Fanout = 1; REG Node = 'register:q_regs[7].reg_q|o_d'
-            Info: Total cell delay = 1.472 ns ( 58.95 % )
-            Info: Total interconnect delay = 1.025 ns ( 41.05 % )
-        Info: - Longest clock path from clock "i_clk" to source register is 2.489 ns
+            Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 37; COMB Node = 'i_clk~clkctrl'
+            Info: 3: + IC(0.671 ns) + CELL(0.618 ns) = 2.486 ns; Loc. = LCFF_X31_Y3_N3; Fanout = 1; REG Node = 'q[2]'
+            Info: Total cell delay = 1.472 ns ( 59.21 % )
+            Info: Total interconnect delay = 1.014 ns ( 40.79 % )
+        Info: - Longest clock path from clock "i_clk" to source register is 2.484 ns
             Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'i_clk'
-            Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 61; COMB Node = 'i_clk~clkctrl'
-            Info: 3: + IC(0.674 ns) + CELL(0.618 ns) = 2.489 ns; Loc. = LCFF_X31_Y2_N17; Fanout = 4; REG Node = 'counter:counter_inst|count[0]'
-            Info: Total cell delay = 1.472 ns ( 59.14 % )
-            Info: Total interconnect delay = 1.017 ns ( 40.86 % )
+            Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 37; COMB Node = 'i_clk~clkctrl'
+            Info: 3: + IC(0.669 ns) + CELL(0.618 ns) = 2.484 ns; Loc. = LCFF_X29_Y2_N19; Fanout = 4; REG Node = 'counter:counter_inst|count[0]'
+            Info: Total cell delay = 1.472 ns ( 59.26 % )
+            Info: Total interconnect delay = 1.012 ns ( 40.74 % )
     Info: + Micro clock to output delay of source is 0.094 ns
     Info: + Micro setup delay of destination is 0.090 ns
-Info: tsu for register "shift_register:shift_register_inst|q[7][2]" (data pin = "i_sck", clock pin = "i_clk") is 4.954 ns
-    Info: + Longest pin to register delay is 7.356 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.827 ns) = 0.827 ns; Loc. = PIN_F7; Fanout = 2; PIN Node = 'i_sck'
-        Info: 2: + IC(4.748 ns) + CELL(0.357 ns) = 5.932 ns; Loc. = LCCOMB_X33_Y2_N12; Fanout = 32; COMB Node = 'enable'
-        Info: 3: + IC(0.678 ns) + CELL(0.746 ns) = 7.356 ns; Loc. = LCFF_X31_Y1_N3; Fanout = 1; REG Node = 'shift_register:shift_register_inst|q[7][2]'
-        Info: Total cell delay = 1.930 ns ( 26.24 % )
-        Info: Total interconnect delay = 5.426 ns ( 73.76 % )
+Info: Clock "i_sck" Internal fmax is restricted to 500.0 MHz between source register "shift_register:shift_register_inst|q[2][2]" and destination register "shift_register:shift_register_inst|q[3][2]"
+    Info: fmax restricted to clock pin edge rate 2.0 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 0.573 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X31_Y3_N13; Fanout = 2; REG Node = 'shift_register:shift_register_inst|q[2][2]'
+            Info: 2: + IC(0.365 ns) + CELL(0.053 ns) = 0.418 ns; Loc. = LCCOMB_X31_Y3_N8; Fanout = 1; COMB Node = 'shift_register:shift_register_inst|q[3][2]~feeder'
+            Info: 3: + IC(0.000 ns) + CELL(0.155 ns) = 0.573 ns; Loc. = LCFF_X31_Y3_N9; Fanout = 2; REG Node = 'shift_register:shift_register_inst|q[3][2]'
+            Info: Total cell delay = 0.208 ns ( 36.30 % )
+            Info: Total interconnect delay = 0.365 ns ( 63.70 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "i_sck" to destination register is 2.496 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.864 ns) = 0.864 ns; Loc. = PIN_M21; Fanout = 2; CLK Node = 'i_sck'
+                Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.207 ns; Loc. = CLKCTRL_G1; Fanout = 24; COMB Node = 'i_sck~clkctrl'
+                Info: 3: + IC(0.671 ns) + CELL(0.618 ns) = 2.496 ns; Loc. = LCFF_X31_Y3_N9; Fanout = 2; REG Node = 'shift_register:shift_register_inst|q[3][2]'
+                Info: Total cell delay = 1.482 ns ( 59.38 % )
+                Info: Total interconnect delay = 1.014 ns ( 40.63 % )
+            Info: - Longest clock path from clock "i_sck" to source register is 2.496 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.864 ns) = 0.864 ns; Loc. = PIN_M21; Fanout = 2; CLK Node = 'i_sck'
+                Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.207 ns; Loc. = CLKCTRL_G1; Fanout = 24; COMB Node = 'i_sck~clkctrl'
+                Info: 3: + IC(0.671 ns) + CELL(0.618 ns) = 2.496 ns; Loc. = LCFF_X31_Y3_N13; Fanout = 2; REG Node = 'shift_register:shift_register_inst|q[2][2]'
+                Info: Total cell delay = 1.482 ns ( 59.38 % )
+                Info: Total interconnect delay = 1.014 ns ( 40.63 % )
+        Info: + Micro clock to output delay of source is 0.094 ns
+        Info: + Micro setup delay of destination is 0.090 ns
+Info: tsu for register "front_detector:front_detector_inst|q" (data pin = "i_sck", clock pin = "i_clk") is 3.737 ns
+    Info: + Longest pin to register delay is 6.131 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.864 ns) = 0.864 ns; Loc. = PIN_M21; Fanout = 2; CLK Node = 'i_sck'
+        Info: 2: + IC(4.958 ns) + CELL(0.309 ns) = 6.131 ns; Loc. = LCFF_X29_Y2_N15; Fanout = 32; REG Node = 'front_detector:front_detector_inst|q'
+        Info: Total cell delay = 1.173 ns ( 19.13 % )
+        Info: Total interconnect delay = 4.958 ns ( 80.87 % )
     Info: + Micro setup delay of destination is 0.090 ns
-    Info: - Shortest clock path from clock "i_clk" to destination register is 2.492 ns
+    Info: - Shortest clock path from clock "i_clk" to destination register is 2.484 ns
         Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'i_clk'
-        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 61; COMB Node = 'i_clk~clkctrl'
-        Info: 3: + IC(0.677 ns) + CELL(0.618 ns) = 2.492 ns; Loc. = LCFF_X31_Y1_N3; Fanout = 1; REG Node = 'shift_register:shift_register_inst|q[7][2]'
-        Info: Total cell delay = 1.472 ns ( 59.07 % )
-        Info: Total interconnect delay = 1.020 ns ( 40.93 % )
-Info: tco from clock "i_clk" to destination pin "o_data[13]" through register "register:q_regs[13].reg_q|o_d" is 6.889 ns
-    Info: + Longest clock path from clock "i_clk" to source register is 2.497 ns
+        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 37; COMB Node = 'i_clk~clkctrl'
+        Info: 3: + IC(0.669 ns) + CELL(0.618 ns) = 2.484 ns; Loc. = LCFF_X29_Y2_N15; Fanout = 32; REG Node = 'front_detector:front_detector_inst|q'
+        Info: Total cell delay = 1.472 ns ( 59.26 % )
+        Info: Total interconnect delay = 1.012 ns ( 40.74 % )
+Info: tco from clock "i_clk" to destination pin "o_data[14]" through register "q[14]" is 6.762 ns
+    Info: + Longest clock path from clock "i_clk" to source register is 2.486 ns
         Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'i_clk'
-        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 61; COMB Node = 'i_clk~clkctrl'
-        Info: 3: + IC(0.682 ns) + CELL(0.618 ns) = 2.497 ns; Loc. = LCFF_X34_Y2_N25; Fanout = 1; REG Node = 'register:q_regs[13].reg_q|o_d'
-        Info: Total cell delay = 1.472 ns ( 58.95 % )
-        Info: Total interconnect delay = 1.025 ns ( 41.05 % )
+        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 37; COMB Node = 'i_clk~clkctrl'
+        Info: 3: + IC(0.671 ns) + CELL(0.618 ns) = 2.486 ns; Loc. = LCFF_X31_Y3_N17; Fanout = 1; REG Node = 'q[14]'
+        Info: Total cell delay = 1.472 ns ( 59.21 % )
+        Info: Total interconnect delay = 1.014 ns ( 40.79 % )
     Info: + Micro clock to output delay of source is 0.094 ns
-    Info: + Longest register to pin delay is 4.298 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X34_Y2_N25; Fanout = 1; REG Node = 'register:q_regs[13].reg_q|o_d'
-        Info: 2: + IC(2.336 ns) + CELL(1.962 ns) = 4.298 ns; Loc. = PIN_D6; Fanout = 0; PIN Node = 'o_data[13]'
-        Info: Total cell delay = 1.962 ns ( 45.65 % )
-        Info: Total interconnect delay = 2.336 ns ( 54.35 % )
-Info: th for register "register:miso_regs[1].reg_miso|o_d" (data pin = "i_mosi[1]", clock pin = "i_clk") is -2.129 ns
-    Info: + Longest clock path from clock "i_clk" to destination register is 2.497 ns
+    Info: + Longest register to pin delay is 4.182 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X31_Y3_N17; Fanout = 1; REG Node = 'q[14]'
+        Info: 2: + IC(2.028 ns) + CELL(2.154 ns) = 4.182 ns; Loc. = PIN_V21; Fanout = 0; PIN Node = 'o_data[14]'
+        Info: Total cell delay = 2.154 ns ( 51.51 % )
+        Info: Total interconnect delay = 2.028 ns ( 48.49 % )
+Info: th for register "o_miso[2]~reg0" (data pin = "i_mosi[2]", clock pin = "i_clk") is -2.187 ns
+    Info: + Longest clock path from clock "i_clk" to destination register is 2.493 ns
         Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'i_clk'
-        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 61; COMB Node = 'i_clk~clkctrl'
-        Info: 3: + IC(0.682 ns) + CELL(0.618 ns) = 2.497 ns; Loc. = LCFF_X34_Y2_N9; Fanout = 1; REG Node = 'register:miso_regs[1].reg_miso|o_d'
-        Info: Total cell delay = 1.472 ns ( 58.95 % )
-        Info: Total interconnect delay = 1.025 ns ( 41.05 % )
+        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 37; COMB Node = 'i_clk~clkctrl'
+        Info: 3: + IC(0.678 ns) + CELL(0.618 ns) = 2.493 ns; Loc. = LCFF_X25_Y2_N1; Fanout = 1; REG Node = 'o_miso[2]~reg0'
+        Info: Total cell delay = 1.472 ns ( 59.05 % )
+        Info: Total interconnect delay = 1.021 ns ( 40.95 % )
     Info: + Micro hold delay of destination is 0.149 ns
-    Info: - Shortest pin to register delay is 4.775 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.827 ns) = 0.827 ns; Loc. = PIN_V8; Fanout = 2; PIN Node = 'i_mosi[1]'
-        Info: 2: + IC(3.740 ns) + CELL(0.053 ns) = 4.620 ns; Loc. = LCCOMB_X34_Y2_N8; Fanout = 1; COMB Node = 'register:miso_regs[1].reg_miso|o_d~feeder'
-        Info: 3: + IC(0.000 ns) + CELL(0.155 ns) = 4.775 ns; Loc. = LCFF_X34_Y2_N9; Fanout = 1; REG Node = 'register:miso_regs[1].reg_miso|o_d'
-        Info: Total cell delay = 1.035 ns ( 21.68 % )
-        Info: Total interconnect delay = 3.740 ns ( 78.32 % )
+    Info: - Shortest pin to register delay is 4.829 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.772 ns) = 0.772 ns; Loc. = PIN_AA9; Fanout = 2; PIN Node = 'i_mosi[2]'
+        Info: 2: + IC(3.748 ns) + CELL(0.309 ns) = 4.829 ns; Loc. = LCFF_X25_Y2_N1; Fanout = 1; REG Node = 'o_miso[2]~reg0'
+        Info: Total cell delay = 1.081 ns ( 22.39 % )
+        Info: Total interconnect delay = 3.748 ns ( 77.61 % )
 Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 173 megabytes
-    Info: Processing ended: Fri Apr 10 21:35:02 2026
+    Info: Processing ended: Sat Apr 18 14:17:42 2026
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
